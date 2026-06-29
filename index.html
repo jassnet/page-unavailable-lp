@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ページを表示できません</title>
+    <meta name="robots" content="noindex">
+    <style>
+      :root {
+        --bg: #fdfdfd;
+        --ink: #2f2f2f;
+        --button-start: #ff5a2f;
+        --button-end: #ffb32e;
+        --button-shadow: rgba(242, 116, 31, 0.28);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", Meiryo, sans-serif;
+      }
+
+      main {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        padding: clamp(32px, 7vw, 76px) 20px;
+      }
+
+      .notice {
+        width: min(100%, 920px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(24px, 4vw, 36px);
+        text-align: center;
+      }
+
+      .notice-image {
+        width: min(100%, 860px);
+        height: auto;
+        display: block;
+      }
+
+      .fallback-copy {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        clip-path: inset(50%);
+        white-space: nowrap;
+      }
+
+      @media (max-width: 520px) {
+        main {
+          align-items: start;
+          padding-top: 44px;
+        }
+
+        .notice {
+          gap: 22px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="notice" aria-labelledby="page-title">
+        <h1 id="page-title" class="fallback-copy">申し訳ございません。指定のページは現在表示できません。</h1>
+        <img
+          class="notice-image"
+          src="https://www.greenappllestore.com/wp-content/uploads/2026/02/%E3%83%AA%E3%83%B3%E3%82%AF%E5%88%87%E3%82%8C%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B-1200-x-628-px-1-1024x536.png"
+          alt="申し訳ございません。指定のページは現在表示できません。"
+        >
+      </section>
+    </main>
+  </body>
+</html>
