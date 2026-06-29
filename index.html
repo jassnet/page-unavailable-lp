@@ -7,11 +7,11 @@
     <meta name="robots" content="noindex">
     <style>
       :root {
-        --bg: #fdfdfd;
-        --ink: #2f2f2f;
-        --button-start: #ff5a2f;
-        --button-end: #ffb32e;
-        --button-shadow: rgba(242, 116, 31, 0.28);
+        --bg: #fbfbfa;
+        --ink: #2e2d2b;
+        --muted: #68645f;
+        --line: #dedbd5;
+        --accent: #f27a2d;
       }
 
       * {
@@ -25,7 +25,9 @@
 
       body {
         margin: 0;
-        background: var(--bg);
+        background:
+          radial-gradient(circle at 50% 14%, rgba(242, 122, 45, 0.08), transparent 28rem),
+          var(--bg);
         color: var(--ink);
         font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "YuGothic", Meiryo, sans-serif;
       }
@@ -34,42 +36,78 @@
         min-height: 100svh;
         display: grid;
         place-items: center;
-        padding: clamp(32px, 7vw, 76px) 20px;
+        padding: clamp(36px, 8vw, 88px) 22px;
       }
 
       .notice {
-        width: min(100%, 920px);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: clamp(24px, 4vw, 36px);
+        width: min(100%, 720px);
+        display: grid;
+        justify-items: center;
+        gap: clamp(18px, 3vw, 26px);
         text-align: center;
       }
 
-      .notice-image {
-        width: min(100%, 860px);
-        height: auto;
-        display: block;
+      .mark {
+        width: clamp(86px, 18vw, 124px);
+        aspect-ratio: 1;
+        position: relative;
+        display: grid;
+        place-items: center;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: #fff;
       }
 
-      .fallback-copy {
+      .mark::before,
+      .mark::after {
+        content: "";
         position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        white-space: nowrap;
+        border-radius: 999px;
+      }
+
+      .mark::before {
+        width: 42%;
+        height: 42%;
+        border: 2px solid var(--ink);
+        transform: rotate(-18deg);
+      }
+
+      .mark::after {
+        width: 58%;
+        height: 2px;
+        background: var(--accent);
+        transform: rotate(-34deg);
+      }
+
+      .label {
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(26px, 5.4vw, 42px);
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: 0;
+        text-wrap: balance;
+      }
+
+      p {
+        max-width: 34rem;
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(15px, 2.5vw, 17px);
+        line-height: 1.9;
+        text-wrap: pretty;
       }
 
       @media (max-width: 520px) {
         main {
           align-items: start;
-          padding-top: 44px;
-        }
-
-        .notice {
-          gap: 22px;
+          padding-top: 72px;
         }
       }
     </style>
@@ -77,12 +115,10 @@
   <body>
     <main>
       <section class="notice" aria-labelledby="page-title">
-        <h1 id="page-title" class="fallback-copy">申し訳ございません。指定のページは現在表示できません。</h1>
-        <img
-          class="notice-image"
-          src="https://www.greenappllestore.com/wp-content/uploads/2026/02/%E3%83%AA%E3%83%B3%E3%82%AF%E5%88%87%E3%82%8C%E3%81%8A%E7%9F%A5%E3%82%89%E3%81%9B-1200-x-628-px-1-1024x536.png"
-          alt="申し訳ございません。指定のページは現在表示できません。"
-        >
+        <div class="mark" aria-hidden="true"></div>
+        <div class="label">PAGE UNAVAILABLE</div>
+        <h1 id="page-title">申し訳ございません。<br>指定のページは現在表示できません。</h1>
+        <p>時間をおいて再度アクセスしていただくか、別のページからお試しください。</p>
       </section>
     </main>
   </body>
